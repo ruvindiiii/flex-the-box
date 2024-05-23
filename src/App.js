@@ -10,11 +10,30 @@ import WrapColumn from "./wrap-column";
 import SyntaxTemplate from "./syntax-template";
 import RowHorizontal from "./row-horizontal";
 import RowVertical from "./row-vertical";
-import ColumnHorizontal from "./column-horisontal";
+import ColumnHorizontal from "./column-horizontal";
 import ColumnVertical from "./column-vertical";
+import { FaGithub } from "react-icons/fa6";
+import SlotCounter from "react-slot-counter";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 
-function App() {
+const firebaseConfig = {
+  apiKey: "AIzaSyBd2kSRzZB1ecj20W9TR8qkUFOA4feQtYY",
+  authDomain: "flex-cheat-sheet.firebaseapp.com",
+  databaseURL: "https://flex-cheat-sheet-default-rtdb.firebaseio.com",
+  projectId: "flex-cheat-sheet",
+  storageBucket: "flex-cheat-sheet.appspot.com",
+  messagingSenderId: "916234067213",
+  appId: "1:916234067213:web:5a25130103f346d746a444",
+  measurementId: "G-SDTJYKKZLE",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+function App(props) {
   const [currentView, setCurrentView] = useState("row");
+  const [clickCount, setClickCount] = useState(1);
 
   useEffect(() => {
     window.VANTA.NET({
@@ -32,7 +51,18 @@ function App() {
       maxDistance: 19.0,
       spacing: 20.0,
     });
+
+    const clickCountRef = ref(db, "click-count");
+    onValue(clickCountRef, (snapshot) => {
+      const data = snapshot.val();
+      setClickCount(data);
+    });
   }, []);
+
+  const handleClickCount = () => {
+    setClickCount(clickCount + 1);
+    set(ref(db, "click-count"), clickCount + 1);
+  };
 
   const handleRowClick = () => {
     setCurrentView("row");
@@ -58,19 +88,25 @@ function App() {
       <span>Click to copy any style</span>
       <h2>Flex your container</h2>
       <div className="display-flex-container">
-        <SyntaxTemplate syntax={"display:flex"} hideGraphic={true} />
+        <SyntaxTemplate
+          syntax={"display:flex"}
+          hideGraphic={true}
+          onCopy={handleClickCount}
+        />
       </div>
       <h2>Choose your direction</h2>
 
       <div className="row-and-col-container">
         <div className="row">
           <SyntaxTemplate
+            onCopy={handleClickCount}
             className={currentView === "row" ? "button-glow" : ""}
             syntax={"flex-direction: row;"}
             hideGraphic={true}
             onClick={handleRowClick}
           />
           <SyntaxTemplate
+            onCopy={handleClickCount}
             className={currentView === "row-reverse" ? "button-glow" : ""}
             syntax={"flex-direction: row-reverse;"}
             hideGraphic={true}
@@ -79,12 +115,14 @@ function App() {
         </div>
         <div className="col">
           <SyntaxTemplate
+            onCopy={handleClickCount}
             className={currentView === "column" ? "button-glow" : ""}
             syntax={"flex-direction: column;"}
             hideGraphic={true}
             onClick={handleColumnClick}
           />
           <SyntaxTemplate
+            onCopy={handleClickCount}
             className={currentView === "column-reverse" ? "button-glow" : ""}
             syntax={"flex-direction: column-reverse;"}
             hideGraphic={true}
@@ -97,11 +135,20 @@ function App() {
         <div className="vertical-alignment-container">
           <h2>Vertical Alignment</h2>
           <div className="vertical">
-            {currentView === "row" && <RowVertical />}
-            {currentView === "row-reverse" && <RowVertical isReverse={true} />}
-            {currentView === "column" && <ColumnVertical />}
+            {currentView === "row" && (
+              <RowVertical onCopySyntax={handleClickCount} />
+            )}
+            {currentView === "row-reverse" && (
+              <RowVertical isReverse={true} onCopySyntax={handleClickCount} />
+            )}
+            {currentView === "column" && (
+              <ColumnVertical onCopySyntax={handleClickCount} />
+            )}
             {currentView === "column-reverse" && (
-              <ColumnVertical isReverse={true} />
+              <ColumnVertical
+                isReverse={true}
+                onCopySyntax={handleClickCount}
+              />
             )}
           </div>
         </div>
@@ -109,13 +156,20 @@ function App() {
         <div className="horizontal-alignment-container">
           <h2>Horizontal Alignment</h2>
           <div className="horizontal">
-            {currentView === "row" && <RowHorizontal />}
-            {currentView === "row-reverse" && (
-              <RowHorizontal isReverse={true} />
+            {currentView === "row" && (
+              <RowHorizontal onCopySyntax={handleClickCount} />
             )}
-            {currentView === "column" && <ColumnHorizontal />}
+            {currentView === "row-reverse" && (
+              <RowHorizontal isReverse={true} onCopySyntax={handleClickCount} />
+            )}
+            {currentView === "column" && (
+              <ColumnHorizontal onCopySyntax={handleClickCount} />
+            )}
             {currentView === "column-reverse" && (
-              <ColumnHorizontal isReverse={true} />
+              <ColumnHorizontal
+                isReverse={true}
+                onCopySyntax={handleClickCount}
+              />
             )}
           </div>
         </div>
@@ -124,26 +178,56 @@ function App() {
       <div className="wrap-align">
         <div className="flex-wrap-container">
           <h2>Wrap to multiple lines</h2>
-          {currentView === "row" && <WrapRow />}
-          {currentView === "row-reverse" && <WrapRow isReverse={true} />}
-          {currentView === "column" && <WrapColumn />}
-          {currentView === "column-reverse" && <WrapColumn isReverse={true} />}
+          {currentView === "row" && <WrapRow onCopySyntax={handleClickCount} />}
+          {currentView === "row-reverse" && (
+            <WrapRow isReverse={true} onCopySyntax={handleClickCount} />
+          )}
+          {currentView === "column" && (
+            <WrapColumn onCopySyntax={handleClickCount} />
+          )}
+          {currentView === "column-reverse" && (
+            <WrapColumn isReverse={true} onCopySyntax={handleClickCount} />
+          )}
         </div>
 
         <div className="align-content-container">
           <h2>Align multiple lines</h2>
-          {currentView === "row" && <AlignContentRow />}
-          {currentView === "row-reverse" && (
-            <AlignContentRow isReverse={true} />
+          {currentView === "row" && (
+            <AlignContentRow onCopySyntax={handleClickCount} />
           )}
-          {currentView === "column" && <AlignContentColumn />}
+          {currentView === "row-reverse" && (
+            <AlignContentRow isReverse={true} onCopySyntax={handleClickCount} />
+          )}
+          {currentView === "column" && (
+            <AlignContentColumn onCopySyntax={handleClickCount} />
+          )}
           {currentView === "column-reverse" && (
-            <AlignContentColumn isReverse={true} />
+            <AlignContentColumn
+              isReverse={true}
+              onCopySyntax={handleClickCount}
+            />
           )}
         </div>
+      </div>
+      <div className="footer">
+        <hr></hr>
+        <SlotCounter
+          value={clickCount}
+          sequentialAnimationMode
+          useMonospaceWidth
+        />
+
+        <h3>Made by Ruvi</h3>
+        <h3 className="git">
+          <a href="https://github.com/ruvindiiii">
+            <FaGithub size={"2.3em"} />
+          </a>
+        </h3>
       </div>
     </div>
   );
 }
 
 export default App;
+
+<h3> </h3>;

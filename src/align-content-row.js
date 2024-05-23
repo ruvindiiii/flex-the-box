@@ -4,6 +4,7 @@ function AlignContentRow(props) {
   return (
     <>
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={12}
         syntax={"align-content: flex-start;"}
         graphicStyle={{
@@ -15,6 +16,7 @@ function AlignContentRow(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={12}
         syntax={"align-content: flex-end;"}
         graphicStyle={{
@@ -26,6 +28,7 @@ function AlignContentRow(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={12}
         syntax={"align-content: center;"}
         graphicStyle={{
@@ -37,6 +40,7 @@ function AlignContentRow(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={12}
         syntax={"align-content: space-between;"}
         graphicStyle={{
@@ -48,6 +52,7 @@ function AlignContentRow(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={12}
         syntax={"align-content: space-around;"}
         graphicStyle={{
@@ -59,6 +64,7 @@ function AlignContentRow(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={12}
         syntax={"align-content: stretch;"}
         graphicStyle={{

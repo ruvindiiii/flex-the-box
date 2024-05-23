@@ -5,6 +5,7 @@ function ColumnHorizontal(props) {
   return (
     <>
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={5}
         syntax={"align-items: flex-start;"}
         graphicStyle={{
@@ -14,24 +15,28 @@ function ColumnHorizontal(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={5}
         syntax={"align-items: flex-end;"}
         graphicStyle={{ flexDirection: flexDirection, alignItems: "flex-end" }}
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={5}
         syntax={"align-items: center;"}
         graphicStyle={{ flexDirection: flexDirection, alignItems: "center" }}
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={5}
         syntax={"align-items: baseline;"}
         graphicStyle={{ flexDirection: flexDirection, alignItems: "baseline" }}
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={5}
         syntax={"align-items: stretch;"}
         graphicStyle={{ flexDirection: flexDirection, alignItems: "stretch" }}

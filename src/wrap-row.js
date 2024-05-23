@@ -5,11 +5,13 @@ function WrapRow(props) {
   return (
     <>
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={7}
         syntax={"flex-wrap: nowrap;"}
         graphicStyle={{ flexWrap: "nowrap", flexDirection: flexDirection }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={12}
         syntax={"flex-wrap: wrap;"}
         graphicStyle={{
@@ -20,6 +22,7 @@ function WrapRow(props) {
         graphicLineStyle={{ height: "50%" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"flex-wrap: wrap-reverse;"}
         lines={12}
         graphicStyle={{

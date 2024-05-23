@@ -5,6 +5,7 @@ function RowVertical(props) {
   return (
     <>
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={7}
         syntax={"align-items: flex-start;"}
         graphicStyle={{
@@ -14,6 +15,7 @@ function RowVertical(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={7}
         syntax={"align-items: flex-end;"}
         graphicStyle={{
@@ -23,6 +25,7 @@ function RowVertical(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={7}
         syntax={"align-items: center;"}
         graphicStyle={{
@@ -32,6 +35,7 @@ function RowVertical(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={7}
         syntax={"align-items: baseline;"}
         graphicStyle={{
@@ -41,6 +45,7 @@ function RowVertical(props) {
         graphicLineStyle={{ height: "2px" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         lines={7}
         syntax={"align-items: stretch;"}
         graphicStyle={{

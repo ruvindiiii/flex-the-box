@@ -5,6 +5,7 @@ function RowHorizontal(props) {
   return (
     <>
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: flex-start;"}
         graphicStyle={{
           justifyContent: "flex-start",
@@ -12,14 +13,19 @@ function RowHorizontal(props) {
         }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: flex-end;"}
         graphicStyle={{
           justifyContent: "flex-end",
           flexDirection: flexDirection,
         }}
       />
-      <SyntaxTemplate syntax={"justify-content: center;"} />
       <SyntaxTemplate
+        syntax={"justify-content: center;"}
+        onCopy={props.onCopySyntax}
+      />
+      <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: space-between;"}
         graphicStyle={{
           justifyContent: "space-between",
@@ -27,6 +33,7 @@ function RowHorizontal(props) {
         }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: space-around;"}
         graphicStyle={{
           justifyContent: "space-around",
@@ -34,6 +41,7 @@ function RowHorizontal(props) {
         }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: space-evenly;"}
         graphicStyle={{
           justifyContent: "space-evenly",

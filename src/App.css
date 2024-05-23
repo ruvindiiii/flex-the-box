@@ -177,3 +177,37 @@ h2 {
   width: 2px;
   box-shadow: rgb(81, 192, 230) 0px 0px 1px 1px;
 }
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
+}
+
+/* .credits {
+  display: flex;
+} */
+
+.git a {
+  color: #acf9fc;
+  cursor: pointer;
+}
+
+.git a:hover {
+  /* Define the color of the link when hovered over */
+  color: white;
+}
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(231, 231, 231, 0),
+    rgba(255, 251, 251, 0.75),
+    rgba(255, 255, 255, 0)
+  );
+  width: 100%;
+}

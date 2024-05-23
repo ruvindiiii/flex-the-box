@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 
 function SyntaxTemplate(props) {
   const onCopyClick = () => {
+    props.onCopy();
     navigator.clipboard.writeText(props.syntax);
     toast.success("Style copied to clipboard", {
       duration: 2500,

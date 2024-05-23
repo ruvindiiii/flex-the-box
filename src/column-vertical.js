@@ -5,6 +5,7 @@ function ColumnVertical(props) {
   return (
     <>
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: flex-start;"}
         graphicStyle={{
           flexDirection: flexDirection,
@@ -13,6 +14,7 @@ function ColumnVertical(props) {
         graphicLineStyle={{ height: "2px", width: "100%" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: flex-end;"}
         graphicStyle={{
           flexDirection: flexDirection,
@@ -21,6 +23,7 @@ function ColumnVertical(props) {
         graphicLineStyle={{ height: "2px", width: "100%" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: center;"}
         graphicStyle={{
           flexDirection: flexDirection,
@@ -29,6 +32,7 @@ function ColumnVertical(props) {
         graphicLineStyle={{ height: "2px", width: "100%" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: space-between;"}
         graphicStyle={{
           flexDirection: flexDirection,
@@ -37,6 +41,7 @@ function ColumnVertical(props) {
         graphicLineStyle={{ height: "2px", width: "100%" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: space-around;"}
         graphicStyle={{
           flexDirection: flexDirection,
@@ -45,6 +50,7 @@ function ColumnVertical(props) {
         graphicLineStyle={{ height: "2px", width: "100%" }}
       />
       <SyntaxTemplate
+        onCopy={props.onCopySyntax}
         syntax={"justify-content: space-evenly;"}
         graphicStyle={{
           flexDirection: flexDirection,
