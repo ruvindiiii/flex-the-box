@@ -1,4 +1,4 @@
-# Flex the box
+# Flex the Box
 
 This website is dedicated to helping developers and new coders understand and effectively use CSS Flexbox.
 
